@@ -14,10 +14,8 @@
     "fabric-image-view": "../fabric-image-view",
     "react": "18.2.0",
     "react-native": "0.71.0",
-    "react-native-signature-capture": "^0.4.12",
     "rtn-calculator": "../RTNCalculator",
-    "rtn-centered-text": "../rtn-centered-text",
-    "rtn-signature-capture": "../signature-capture"
+    "rtn-centered-text": "../rtn-centered-text"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

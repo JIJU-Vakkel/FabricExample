@@ -1,11 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
+import React, { useState } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -18,26 +11,13 @@ import {
   Button
 } from 'react-native';
 import RTNCenteredText from 'rtn-centered-text/js/RTNCenteredTextNativeComponent';
-// import RTNCenteredText from 'rtn-calculator/'
 import RTNCalculator from 'rtn-calculator/js/NativeCalculator';
 import RTNImageComponent from 'fabric-image-view/js/ImageComponentNativeComponent';
-import RTNSignatureCapture from 'rtn-signature-capture/js/SignatureCaptureNativeComponent';
-
-// import SignatureCapture from 'react-native-signature-capture';
-
 import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
+  Colors
 } from 'react-native/Libraries/NewAppScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import Login from './LoginPage';
-
-const Home = () =>{
-  return(<View style = {{flex:1,backgroundColor:'red'}}></View>)
-}
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -46,9 +26,11 @@ function App(): JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const [result,setResult] = useState(0)
+
   return (
     <NavigationContainer>
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView style={[backgroundStyle,{flex:1}]}>
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
@@ -56,51 +38,22 @@ function App(): JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-          <RTNCenteredText
-          style={{height:50}}
-          text='JIJU VV'
-          />
+         
           <RTNImageComponent
           style={{with:100,height:100}}
           image={{
             uri: 'https://reactnative.dev/docs/assets/p_cat2.png',
           }}
           />
-          <RTNSignatureCapture
-          style={{flex: 1, width: '100%'}}
-          onDragEvent={()=>{console.log("onDragEvent");
-          }}
-          onSaveEvent={()=>{console.log("onSaveEvent");
-          }}
-          backgroundColor="#ff00ff"
-          strokeColor="#ffffff"
-          minStrokeWidth={4}
-          maxStrokeWidth={4}
-          />
-          <Login user={{name:"jihan",password:'vdvdx'}}/>
-
-          {/* <SignatureCapture
-            style={{flex: 1, width: '100%'}}
-            onDragEvent={this._onDragEvent.bind(this)}
-            onSaveEvent={this._onSaveEvent.bind(this)}
-            backgroundColor="#ff00ff"
-            strokeColor="#ffffff"
-            minStrokeWidth={4}
-            maxStrokeWidth={4}
-          /> */}
 
           <Button
         title="Compute"
         onPress={async () => {
           const value = await RTNCalculator.add(3, 7);
+          setResult(value)
           console.log({value})
         }}
       />
-          {/* <RTNCenteredText
-      text="Hello World!"
-      style={{width: '100%', height: 30}}
-    /> */}
-        {/* <Header /> */}
 
         <View
           style={{
@@ -109,28 +62,13 @@ function App(): JSX.Element {
           
         </View>
       </ScrollView>
+      <RTNCenteredText
+          style={{height:25,width:'100%',position:'absolute',bottom:8,}}
+          text={`JIJU VV${result}`}
+          />
     </SafeAreaView>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;
