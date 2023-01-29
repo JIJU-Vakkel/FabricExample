@@ -1,0 +1,35 @@
+{
+    "name": "fabric-image-view",
+    "version": "0.0.1",
+    "description": "Showcase Fabric component with state",
+    "react-native": "js/index",
+    "source": "js/index",
+    "files": [
+        "js",
+        "android",
+        "ios",
+        "!android/build",
+        "!ios/build",
+        "!**/__tests__",
+        "!**/__fixtures__",
+        "!**/__mocks__"
+    ],
+    "keywords": ["react-native", "ios", "android"],
+    "repository": "https://github.com/JIJU-Vakkel/fabric-image-view",
+    "author": "JIJU V V vvjiju@gmail.com (https://github.com/JIJU-Vakkel)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/JIJU-Vakkel/fabric-image-view/issues"
+    },
+    "homepage": "https://github.com/JIJU-Vakkel/fabric-image-view#readme",
+    "devDependencies": {},
+    "peerDependencies": {
+        "react": "*",
+        "react-native": "*"
+    },
+    "codegenConfig": {
+        "name": "RTNImageViewSpec",
+        "type": "all",
+        "jsSrcsDir": "js"
+    }
+}
